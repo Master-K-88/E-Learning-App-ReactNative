@@ -1,10 +1,8 @@
 import { View, Text, Image, TouchableOpacity, Dimensions } from 'react-native'
 import React from 'react'
-// import appimg from './../../assets/images/app_review.png'
 import appimg from './../../assets/images/app-review.png'
 import googleImg from './../../assets/images/Google.png'
 import Colors from '../Utils/Colors';
-// import styles from './../Utils/AppStyles'
 
 import * as WebBrowser from "expo-web-browser";
 import { useOAuth } from "@clerk/clerk-expo";

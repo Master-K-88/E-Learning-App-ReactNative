@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function LeaderBoard() {
   return (
-    <View>
+    <View style={{flex:1}}>
       <Text>LeaderBoard</Text>
     </View>
   )

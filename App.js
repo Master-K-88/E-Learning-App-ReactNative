@@ -1,12 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import {useFonts} from 'expo-font';
+import { useState } from 'react';
 import {ClerkProvider, SignedIn, SignedOut} from '@clerk/clerk-expo'
 import LoginView from './App/Views/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import { TabNavigation } from './App/Navigations/TabNavigation';
+import { UserPointsContext } from './App/Context/UserPointsContext';
 
 export default function App() {
+  const [userPoints, setUserPoints] = useState(null);
   const [fontsLoaded] = useFonts({
     'outfit': require('./assets/fonts/Outfit-Regular.ttf'),
     'outfit-semibold': require('./assets/fonts/Outfit-SemiBold.ttf'),
@@ -15,10 +18,12 @@ export default function App() {
   })
   return fontsLoaded&&(
     <ClerkProvider publishableKey={"pk_test_cGVhY2VmdWwtbGFjZXdpbmctOTYuY2xlcmsuYWNjb3VudHMuZGV2JA"}>
-      <View style={styles.container}>
-      <View style={styles.container}>
+      {/* <CourseProgressContext.Provider value={{enrolledProgressCourse, setProgressEnrolledCourse}}> */}
+        <UserPointsContext.Provider value = {{userPoints, setUserPoints}}>
+          {/* <CompletedChapterContext.Provider value={{isChapterCompleted, setIsChapterCompleted}}> */}
+            <View style={styles.container}>
               <SignedIn>
-              <NavigationContainer>
+              <NavigationContainer style={{flex: 1}}>
                   <TabNavigation />
                 </NavigationContainer>
               </SignedIn>
@@ -26,7 +31,9 @@ export default function App() {
               <LoginView />
               </SignedOut>
             </View>
-      </View>
+          {/* </CompletedChapterContext.Provider> */}
+      </UserPointsContext.Provider>
+    {/* </CourseProgressContext.Provider> */}
     </ClerkProvider>
   );
 }
@@ -34,8 +41,14 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  navContainer: {
+    flex: 1,
+    backgroundColor: '#f0f',
   },
 });

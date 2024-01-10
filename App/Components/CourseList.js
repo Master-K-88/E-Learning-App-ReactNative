@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export default function MyCourse() {
+export default function CourseList(props) {
   return (
-    <View style={{flex:1}}>
-      <Text>MyCourse</Text>
+    <View>
+      <Text>CourseList</Text>
     </View>
   )
 }

@@ -9,5 +9,6 @@ export default {
     GRAY_TEXT: '#7D7D7D',
     PURPLE_GRAY: '#f1efff',
     GREEN: '#EBFFEA',
-    DARKGREEN: '#0BAE1B'
+    DARKGREEN: '#0BAE1B',
+    SEARCHTEXTCOLOR: '#8C8C8C'
 }
