@@ -10,7 +10,12 @@ export default function SearchComponent(props) {
     }
 
     const performSearch = () => {
-        props.performSearch(textValue)
+        if (props.searched) {
+            setTextValue("")
+            props.performSearch(textValue)
+        } else {
+            textValue.length == 0 ? null : props.performSearch(textValue)
+        }
     }
 
   return (
@@ -19,9 +24,12 @@ export default function SearchComponent(props) {
       placeholder='Search Projects'
       onChangeText={onChangeText}
       style={styles.textInput}
+      value={textValue}
+      autoCapitalize='none'
+      autoCorrect={false}
       />
       <TouchableOpacity onPress={performSearch}>
-        <Ionicons name="search-circle" size={52} color={Colors.SECONDARY} />
+        <Ionicons name= {props.searched ? "sync-circle-outline" : "search-circle"} size={52} color={Colors.SECONDARY} />
       </TouchableOpacity>
     </View>
   )

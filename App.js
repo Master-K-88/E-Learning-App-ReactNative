@@ -7,9 +7,11 @@ import LoginView from './App/Views/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import { TabNavigation } from './App/Navigations/TabNavigation';
 import { UserPointsContext } from './App/Context/UserPointsContext';
+import { CourseProgressContext } from './App/Context/CourseProgressContext';
 
 export default function App() {
   const [userPoints, setUserPoints] = useState(null);
+  const [enrolledProgressCourse, setProgressEnrolledCourse] = useState([])
   const [fontsLoaded] = useFonts({
     'outfit': require('./assets/fonts/Outfit-Regular.ttf'),
     'outfit-semibold': require('./assets/fonts/Outfit-SemiBold.ttf'),
@@ -18,7 +20,7 @@ export default function App() {
   })
   return fontsLoaded&&(
     <ClerkProvider publishableKey={"pk_test_cGVhY2VmdWwtbGFjZXdpbmctOTYuY2xlcmsuYWNjb3VudHMuZGV2JA"}>
-      {/* <CourseProgressContext.Provider value={{enrolledProgressCourse, setProgressEnrolledCourse}}> */}
+      <CourseProgressContext.Provider value={{enrolledProgressCourse, setProgressEnrolledCourse}}>
         <UserPointsContext.Provider value = {{userPoints, setUserPoints}}>
           {/* <CompletedChapterContext.Provider value={{isChapterCompleted, setIsChapterCompleted}}> */}
             <View style={styles.container}>
@@ -33,7 +35,7 @@ export default function App() {
             </View>
           {/* </CompletedChapterContext.Provider> */}
       </UserPointsContext.Provider>
-    {/* </CourseProgressContext.Provider> */}
+    </CourseProgressContext.Provider>
     </ClerkProvider>
   );
 }
@@ -49,6 +51,5 @@ const styles = StyleSheet.create({
 
   navContainer: {
     flex: 1,
-    backgroundColor: '#f0f',
   },
 });

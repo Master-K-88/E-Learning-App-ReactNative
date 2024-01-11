@@ -3,11 +3,11 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 import CourseItemHorizontal from './CourseItemHorizontal';
 
-export default function CourseList(props) {
+export default function InProgressCourseList(props) {
     const navigation = useNavigation();
     const renderItem = ({item}) => (
         <View style = {styles.renderItem}>
-            <CourseItemHorizontal course = {item} />
+            <CourseItemHorizontal course = {item.course} />
         </View>
     );
   return (
